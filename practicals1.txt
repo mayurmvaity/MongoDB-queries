@@ -1,0 +1,68 @@
+use niit
+
+db
+
+db.createCollection("employee")
+
+db.employee.insert({"name":"Krishna"})
+
+show dbs
+
+use niit2
+
+db.dropDatabase()
+
+use niit
+
+show collections
+
+db.employee.drop()
+
+db.employee.insert({
+emp_id:'Emp002',
+fname:'Rajiv',
+lname:'Kumar',
+dob:new Date("1972-06-20"),
+doj:new Date("2016-04-01"),
+address:[
+{
+Block:'4/801',
+Street:'3rd Road',
+City:'Mumbai',
+State:'Maharashtra',
+pin:'400005'
+}
+]
+})
+
+db.employee.insert({
+emp_id:'Emp030',
+fname:'Harish',
+lname:'Shah',
+address:[
+{
+Block:'2/501',
+Street:'4th Road',
+City:'Mumbai',
+State:'Maharashtra',
+pin:'400025'
+}
+]
+})
+
+
+db.employee.find().pretty()
+
+db.employee.find({'fname':'Rajiv'}).pretty()
+
+db.employee.find({'address.pin':'400005'}).pretty()
+
+db.employee.update({'emp_id':'Emp100'},{$set:{'lname':'Shah'}})
+
+db.employee.remove({'lname':'Shah'},1)
+
+db.employee.remove()
+
+db.employee.find().pretty().limit(1).skip(1)
+
+db.employee.find({},{"fname":1}).sort({"fname":-1})

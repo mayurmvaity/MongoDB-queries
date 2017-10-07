@@ -1,0 +1,29 @@
+mongoimport --db test --collection restaurants  --drop  --file C:\retaurants.json
+
+
+mongoimport -d test -c student --type csv --file c:\students.csv --headerline
+
+
+db.restaurants.find()
+
+db.restaurants.find().limit(1)
+
+
+
+db.restaurants.find({}, {"restaurant_id":1,"name":1,"borough":1,"cuisine":1})
+
+db.restaurants.find({}, {"restaurant_id":1,"name":1,"borough":1,"cuisine":1, "_id":0})
+
+db.restaurants.find({"borough":"Bronx"})
+
+db.restaurants.find({"borough":"Bronx"}).limit(5)
+
+db.restaurants.find({"borough":"Bronx"}).skip(5).limit(5)
+
+db.restaurants.find({grades: {$elemMatch : { "score" : { $gt : 90 } } } })
+
+db.restaurants.find({grades: {$elemMatch : { "score" : { $gt : 90, $lt : 100 } } } })
+
+db.restaurants.find({ "address.coord" : { $lt : -95.754168 } })
+
+
